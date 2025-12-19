@@ -18,10 +18,12 @@
     </bean>
 
     <bean id="myCar" class="DI_Task2_Pt2.Car">
-        <constructor-arg name="DBops" ref="myDatabaseOperations"></constructor-arg>
+        <constructor-arg ref="myDatabaseOperations"></constructor-arg>
     </bean>
 
-    <bean id="myPlane" class=""
+    <bean id="myPlane" class="DI_Task2_Pt2.Plane">
+        <property name="databaseOperations" ref="myDatabaseOperations"></property>
+    </bean>
 
 
 </beans>

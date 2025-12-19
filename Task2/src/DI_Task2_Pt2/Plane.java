@@ -14,6 +14,6 @@ public class Plane implements Vehicle{
     @Override
     public void storeVehicle(){
         databaseOperations.databaseOperations();
-        System.out.println("Storing car in the database ....... ");
+        System.out.println("Storing plane in the database ....... ");
     }
 }
