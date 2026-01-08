@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!-- Define your beans here -->
+
+    <bean id="myDraw2D"
+          class="Draw2D"></bean>
+
+    <bean id="myDraw3D"
+          class="Draw3D"></bean>
+
+    <bean id="myCircle"
+          class="Circle" scope="singleton">
+        <constructor-arg ref="myDraw2D"></constructor-arg>
+        <constructor-arg ref="myDraw3D"></constructor-arg>
+    </bean>
+
+    <bean id="mySquare"
+          class="Square" scope="prototype">
+        <property name="draw2D" ref="myDraw2D"></property>
+        <property name="draw3D" ref="myDraw3D"></property>
+    </bean>
+
+    <bean id="myDatabaseOperations"
+          class="DatabaseOperations"
+          init-method="connectToDatabase"
+          destroy-method="disconnectToDatabase"></bean>
+
+</beans>
