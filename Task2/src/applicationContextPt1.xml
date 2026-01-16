@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!-- Define your beans here -->
+    <bean id = "myDraw2D" class="DI_Task2_Pt1.Draw2D">
+
+    </bean>
+
+    <bean id = "myDraw3D" class="DI_Task2_Pt1.Draw3D">
+
+    </bean>
+
+    <bean id="myCircle" class="DI_Task2_Pt1.Circle">
+        <constructor-arg ref="myDraw2D"></constructor-arg>
+        <constructor-arg ref="myDraw3D"></constructor-arg>
+    </bean>
+
+    <bean id="mySquare" class="DI_Task2_Pt1.Square">
+        <property name="draw2D" ref="myDraw2D"></property>
+        <property name="draw3D" ref="myDraw3D"></property>
+    </bean>
+
+
+</beans>
