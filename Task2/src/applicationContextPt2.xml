@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!-- Define your beans here -->
+    <context:property-placeholder location="classpath:application.properties"></context:property-placeholder>
+
+    <bean id="myDatabaseOperations" class="DI_Task2_Pt2.DatabaseOperations">
+        <property name="url" value = "${database.url}"></property>
+        <property name="username" value = "${database.username}"></property>
+        <property name="password" value = "${database.password}"></property>
+    </bean>
+
+    <bean id="myCar" class="DI_Task2_Pt2.Car">
+        <constructor-arg ref="myDatabaseOperations"></constructor-arg>
+    </bean>
+
+    <bean id="myPlane" class="DI_Task2_Pt2.Plane">
+        <property name="databaseOperations" ref="myDatabaseOperations"></property>
+    </bean>
+
+
+</beans>
